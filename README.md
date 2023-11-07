@@ -1,5 +1,5 @@
 # Gnosis Safe Transaction Scripts
-This repository contains a set of JavaScript scripts that interact with a Gnosis Safe multisignature wallet on the Goerli testnet. These scripts demonstrate various operations, including creating a Safe, deploying a contract, executing a transaction, and approving a transaction. They are built using the ethers.js library and the Gnosis Safe Protocol Kit.
+This repository contains a set of JS scripts that interact with a Gnosis Safe multisignature wallet on the Goerli testnet. These scripts demonstrate various operations, including creating a Safe, deploying a contract, executing a transaction, and approving a transaction. They are built using the ethers.js library and the Gnosis Safe Protocol Kit.
 
 # Prerequisites
 Before running the scripts, ensure that you have:
