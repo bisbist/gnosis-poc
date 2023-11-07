@@ -18,8 +18,6 @@ Install the required dependencies:
 
 # Add contract ABI's
 - Put CreateCall and sample contract ABI's in a separate file.
-  
-Create a .env file in the root directory of the project and set your environment variables as described below.
 
 # Environment Variables
 
