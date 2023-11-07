@@ -59,11 +59,11 @@ Copy the safeTxHash from this step and provide it as an input for approveTxn and
 To run this script, use the following command:
 - node deployContract.js
 
-## approveTxn.js
+## approveTx.js
 Approves a pending transaction in the Safe.
 
 To run this script, use the following command:
-- node approveTxn.js
+- node approveTx.js
 
 ## executeTx.js
 Executes a pending transaction in the Safe.
