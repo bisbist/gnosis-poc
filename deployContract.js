@@ -6,42 +6,6 @@ import SafeApiKit from "@safe-global/api-kit";
 
 dotenv.config();
 
-async function executeTx(safeTxHash, signer, safeAddress) {
-    const ethAdapter = new EthersAdapter({
-        ethers,
-        signerOrProvider: signer,
-    });
-
-    const safeService = new SafeApiKit.default({
-        txServiceUrl: "https://safe-transaction-goerli.safe.global",
-        ethAdapter,
-    });
-
-    const safeTransaction = await safeService.getTransaction(safeTxHash);
-    const safeSdk = await Safe.default.create({
-        ethAdapter: ethAdapter,
-        safeAddress: safeAddress,
-    });
-    const execute = await safeSdk.executeTransaction(safeTransaction);
-    const receipt = await execute.transactionResponse?.wait();
-    return receipt;
-}
-
-async function approveTxn(safeTxHash, signer, safeAddress) {
-    const ethAdapter = new EthersAdapter({
-        ethers,
-        signerOrProvider: signer,
-    });
-
-    const safeSdk = await Safe.default.create({
-        ethAdapter: ethAdapter,
-        safeAddress: safeAddress,
-    });
-    const execute = await safeSdk.approveTransactionHash(safeTxHash);
-    const receipt = await execute.transactionResponse?.wait();
-    return receipt;
-}
-
 const CreateCallAbi = [
 	{
 		"anonymous": false,
@@ -159,15 +123,3 @@ const transactionConfig = {
 };
 
 await safeService.proposeTransaction(transactionConfig);
-
-approveTxn(
-    safeTxHash,
-    new Wallet(process.env.secret_key2, provider),
-    SAFE_ADDRESS
-);
-
-executeTx(
-    safeTxHash,
-    new Wallet(process.env.secret_key3, provider),
-    SAFE_ADDRESS
-);

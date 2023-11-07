@@ -102,55 +102,8 @@ async function addSafe(safeAddress, senderAddress, signer) {
   await safeService.proposeTransaction(transactionConfig);
 }
 
-async function executeTx(safeTxHash, signer, safeAddress) {
-  const ethAdapter = new EthersAdapter({
-    ethers,
-    signerOrProvider: signer,
-  });
-
-  const safeService = new SafeApiKit.default({
-    txServiceUrl: "https://safe-transaction-goerli.safe.global",
-    ethAdapter,
-  });
-  const safeTransaction = await safeService.getTransaction(safeTxHash);
-  const safeSdk = await Safe.default.create({
-    ethAdapter: ethAdapter,
-    safeAddress: safeAddress,
-  });
-  const execute = await safeSdk.executeTransaction(safeTransaction);
-  const receipt = await execute.transactionResponse?.wait();
-  return receipt;
-}
-
-async function approveTxn(safeTxHash, signer, safeAddress) {
-  const ethAdapter = new EthersAdapter({
-    ethers,
-    signerOrProvider: signer,
-  });
-
-  const safeSdk = await Safe.default.create({
-    ethAdapter: ethAdapter,
-    safeAddress: safeAddress,
-  });
-  const execute = await safeSdk.approveTransactionHash(safeTxHash);
-  const receipt = await execute.transactionResponse?.wait();
-  return receipt;
-}
-
 addSafe(
   safeAddress,
   "0x70cF923879F7e46551A999D84527a525554CCA01",
   new Wallet(process.env.secret_key1, provider)
-);
-
-approveTxn(
-  "0x1a5f1a3e77b5e41f4215b71aa4b471164fe367afc6114df38eb2191580a008da",
-  new Wallet(process.env.secret_key2, provider),
-  safeAddress
-);
-
-executeTx(
-  "0x1a5f1a3e77b5e41f4215b71aa4b471164fe367afc6114df38eb2191580a008da",
-  new Wallet(process.env.secret_key3, provider),
-  safeAddress
 );
