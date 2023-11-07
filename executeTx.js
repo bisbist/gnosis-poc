@@ -30,7 +30,7 @@ async function executeTx(safeTxHash, signer, safeAddress) {
 }
 
 const safeTxHash =
-  "0x8f27aaad57df869cec19fb2c5f53f6d8aaff07aac3105d6dc14a02e3532fd32c";
+  "0xf0bce1e1bcd7dddbd0145e2d14ddddfacf9be683a5affa746b61ae2e31ecd7a4";
 const signer = new Wallet(process.env.secret_key3, provider);
 const safeAddress = "0xD3B71D33e515355646E8837481A9A7b1d9a61918";
 

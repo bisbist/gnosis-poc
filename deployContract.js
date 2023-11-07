@@ -3,79 +3,11 @@ import { ethers, Wallet } from "ethers";
 import Safe, { SafeFactory } from "@safe-global/protocol-kit";
 import { EthersAdapter } from "@safe-global/protocol-kit";
 import SafeApiKit from "@safe-global/api-kit";
+import {CreateCallAbi} from "./ABI.js";
 
 dotenv.config();
 
-const CreateCallAbi = [
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newContract",
-				"type": "address"
-			}
-		],
-		"name": "ContractCreation",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "value",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes",
-				"name": "deploymentData",
-				"type": "bytes"
-			}
-		],
-		"name": "performCreate",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "newContract",
-				"type": "address"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "value",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes",
-				"name": "deploymentData",
-				"type": "bytes"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "salt",
-				"type": "bytes32"
-			}
-		],
-		"name": "performCreate2",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "newContract",
-				"type": "address"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	}
-];
-
-const SAFE_ADDRESS = "0xD3B71D33e515355646E8837481A9A7b1d9a61918";
+const SAFE_ADDRESS = process.env.SAFEADDRESS;
 const provider = new ethers.providers.JsonRpcProvider(
     "https://eth-goerli.g.alchemy.com/v2/fLCeKO4GA9Gc3js8MUt9Djy7WHCFxATq"
 );
