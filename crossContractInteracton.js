@@ -27,7 +27,7 @@ async function crossContractInteracton(safeAddress, senderAddress, signer) {
 const contractAddress = process.env.CONTRACTADDRESS;
 const abi = ABI;
   const iface = new ethers.utils.Interface(abi);
-  const calldata = iface.encodeFunctionData("returnMany");
+  const calldata = iface.encodeFunctionData("set", [13]);
   const safeSdk = await Safe.default.create({
     ethAdapter: ethAdapter,
     safeAddress: safeAddress,

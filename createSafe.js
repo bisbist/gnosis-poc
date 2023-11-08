@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 import { ethers } from "ethers";
 import { SafeFactory } from "@safe-global/protocol-kit";
 import { EthersAdapter } from "@safe-global/protocol-kit";
-import SafeApiKit from "@safe-global/api-kit";
+// import SafeApiKit from "@safe-global/api-kit";
 
 dotenv.config();
 
@@ -20,11 +20,11 @@ const ethAdapterOwner1 = new EthersAdapter({
     signerOrProvider: owner1Signer,
 });
 
-const txServiceUrl = "https://safe-transaction-goerli.safe.global/";
-const safeService = new SafeApiKit.default({
-    txServiceUrl,
-    ethAdapter: ethAdapterOwner1,
-});
+// const txServiceUrl = "https://safe-transaction-goerli.safe.global/";
+// const safeService = new SafeApiKit.default({
+//     txServiceUrl,
+//     ethAdapter: ethAdapterOwner1,
+// });
 
 async function main() {
     const safeFactory = await SafeFactory.create({

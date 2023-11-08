@@ -23,9 +23,10 @@ async function approveTxn(safeTxHash, signer, safeAddress) {
   return receipt;
 }
 
-const safeTxHash = "0xf0bce1e1bcd7dddbd0145e2d14ddddfacf9be683a5affa746b61ae2e31ecd7a4";
+const safeTxHash = "0x036af7c813de2bf3a053afa958a7a26ae482f459c22cbeff5e53046306b18da1";
 const signer = new Wallet(process.env.secret_key2, provider);
-const safeAddress = "0xD3B71D33e515355646E8837481A9A7b1d9a61918";
+const safeAddress = process.env.SAFEADDRESS;
+
 
 (async () => {
   try {
