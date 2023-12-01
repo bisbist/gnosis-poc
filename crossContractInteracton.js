@@ -11,7 +11,7 @@ const provider = new ethers.providers.JsonRpcProvider(
   "https://eth-goerli.g.alchemy.com/v2/fLCeKO4GA9Gc3js8MUt9Djy7WHCFxATq"
 );
 
-const safeAddress = process.env.SAFEADDRESS;
+const safeAddress = process.env.SAFE_ADDRESS;
 
 async function crossContractInteracton(safeAddress, senderAddress, signer) {
   const ethAdapter = new EthersAdapter({
@@ -27,7 +27,7 @@ async function crossContractInteracton(safeAddress, senderAddress, signer) {
 const contractAddress = process.env.CONTRACTADDRESS;
 const abi = ABI;
   const iface = new ethers.utils.Interface(abi);
-  const calldata = iface.encodeFunctionData("set", [13]);
+  const calldata = iface.encodeFunctionData("upgradeTo", ["0xDE15599fa2af6BFC7Bba7C651A8c4efEaB4c2668"]);
   const safeSdk = await Safe.default.create({
     ethAdapter: ethAdapter,
     safeAddress: safeAddress,
@@ -60,6 +60,6 @@ const abi = ABI;
 
 crossContractInteracton(
   safeAddress,
-  "0x70cF923879F7e46551A999D84527a525554CCA01",
+  process.env.SENDER_ADDRESS,
   new Wallet(process.env.secret_key1, provider)
 );
