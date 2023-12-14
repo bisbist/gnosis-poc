@@ -3,7 +3,7 @@ import { ethers, Wallet } from "ethers";
 import Safe, { SafeFactory } from "@safe-global/protocol-kit";
 import { EthersAdapter } from "@safe-global/protocol-kit";
 import SafeApiKit from "@safe-global/api-kit";
-import {CreateCallAbi, implementationABI, proxyABI} from "./ABI.js";
+import {CreateCallAbi, TokenBridgeImplementationABI} from "./ABI.js";
 
 dotenv.config();
 
@@ -13,11 +13,11 @@ const provider = new ethers.providers.JsonRpcProvider(
 );
 const deployerSigner = new ethers.Wallet(process.env.secret_key1, provider);
 
-const newImplementationAddress = "0x6408a1a308cbB163Eff3A6FF8C916a54036C327D";
-const proxyAddress = "0x39B7A54F1402EBf1e00B1B3852949b860aE5EbC3";
+const newImplementationAddress = "0x21F40152367d148a4Aa418229145684be6A85b62";
+const proxyAddress = "0xbD89AaF820a01D5d73d0d1Dc4B81Ec384bfCC0E0";
 
 // Encode deployment
-const deployerInterface = new ethers.utils.Interface(implementationABI);
+const deployerInterface = new ethers.utils.Interface(TokenBridgeImplementationABI);
 const deployCallData = deployerInterface.encodeFunctionData("upgradeTo", [
     newImplementationAddress
 ]);
