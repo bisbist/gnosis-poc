@@ -11,8 +11,6 @@ const provider = new ethers.providers.JsonRpcProvider(
   "https://eth-goerli.g.alchemy.com/v2/fLCeKO4GA9Gc3js8MUt9Djy7WHCFxATq"
 );
 
-// const safeAddress = process.env.SAFE_ADDRESS;
-
 async function crossContractInteracton(safeAddress, senderAddress, signer) {
   const ethAdapter = new EthersAdapter({
     ethers,
